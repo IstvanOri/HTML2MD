@@ -26,6 +26,7 @@ class HTML2MDParser(HTMLParser, ABC):
                 cmd.tag = tag
                 if len(self._commands) > 0:
                     self._commands[-1].add_child(cmd)
+                    self._commands[-1].data += "[:child:]"
                     cmd.ancestor = self._commands[-1]
                 self._commands.append(cmd)
                 if first:

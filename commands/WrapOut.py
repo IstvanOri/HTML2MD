@@ -21,7 +21,10 @@ class WrapOut(Wrap):
         if not in_:
             return super().execute()
         else:
-            result = ""
+            result = self.data
             for child in self._children:
-                result += child.execute()
-            return result + self.data
+                if result.find("[:child:]") > -1:
+                    result = result.replace("[:child:]", child.execute(), 1)
+                else:
+                    result += child.execute()
+            return result

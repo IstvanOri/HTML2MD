@@ -35,7 +35,7 @@ class Wrap(Command):
                 suffix = str(getattr(Command, self._suffix))
         except AttributeError:
             pass
-        content = super().execute() + self.data
+        content = super().execute()
         if len(content) > 0 and not content.isspace() or self._allow_empty:
             return prefix + content + suffix
         return ""

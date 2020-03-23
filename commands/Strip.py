@@ -18,6 +18,6 @@ class Strip(Command):
         :return: the stripped content
         """
         result: str = ""
-        for lines in (super().execute() + self.data).splitlines():
+        for lines in (super().execute()).splitlines():
             result += lines.strip()
         return result
