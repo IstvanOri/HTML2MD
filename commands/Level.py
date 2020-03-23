@@ -24,6 +24,6 @@ class Level(Command):
         :return: ""
         """
         result = ""
-        for i in range(0, self._level):
+        for i in range(1, self._level):
             result += self._leveling
         return result + super().execute()

@@ -25,11 +25,11 @@
 #
 # General HTML tags:
 html:Strip()
-h1:Wrap(#\s,\n)
-h2:Wrap(##\s,\n)
-h3:Wrap(###\s,\n)
-p:WrapOut(\n,\n,False,table;li)
-div:Wrap(,\n)
+h1:Strip()>Wrap(\n#\s,\n)
+h2:Strip()>Wrap(\n##\s,\n)
+h3:Strip()>Wrap(\n###\s,\n)
+p:WrapOut(\n,\n,False,table;ol;ul)
+div:WrapOut(,\n,False,table;ol;ul)
 i:Wrap(_,_)
 b:Wrap(__,__)
 span:Wrap(,)

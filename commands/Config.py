@@ -28,7 +28,7 @@ class Config(Command):
         old = getattr(Command, self._attr)
         to_set = self._val
         if self._val == "++":
-            to_set = int(old)+1
+            to_set = int(old) + 1
         if self._val == "--":
             to_set = int(old) - 1
         setattr(Command, self._attr, to_set)
