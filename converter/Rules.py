@@ -31,7 +31,7 @@ class Rules():
                 for command in setup:
                     command_name = command[:command.find("(")]
                     command_args = command[command.find("(")+1:command.rfind(")")]
-                    command_args_list = command_args.split(",")
+                    command_args_list = list(command_args.split(","))
                     command_args_dict = {i: command_args_list[i] for i in range(0, len(command_args_list))}
                     command_class_name = _get_class("commands."+command_name+"."+command_name)
                     command_class_type = type(command_name, (command_class_name,), command_args_dict)

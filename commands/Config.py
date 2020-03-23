@@ -26,7 +26,12 @@ class Config(Command):
         :return: The result of the child Commands with the given Config
         """
         old = getattr(Command, self._attr)
-        setattr(Command, self._attr, self._val)
+        to_set = self._val
+        if self._val == "++":
+            to_set = int(old)+1
+        if self._val == "--":
+            to_set = int(old) - 1
+        setattr(Command, self._attr, to_set)
         result = super().execute()
         setattr(Command, self._attr, old)
         return result

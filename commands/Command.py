@@ -14,6 +14,7 @@ class Command:
     """
 
     _bullet = " * "
+    _level = 0
 
     def __init__(self):
         self._children: [Command] = []
