@@ -12,9 +12,9 @@ class WrapIn(Wrap):
         return WrapIn((self._prefix, self._suffix, self._allow_empty, ";".join(self._tag_list)))
 
     def execute(self) -> str:
-        p: Command = self._parent
+        p: Command = self.ancestor
         while p is not None:
             if p.tag in self._tag_list:
                 return super().execute()
             else:
-                p = p.parent
+                p = p.ancestor
