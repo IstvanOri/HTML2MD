@@ -18,4 +18,4 @@ class LinkFixer(Transformation):
         pass
 
     def execute(self, content: str) -> str:
-        return re.sub('\\((?!.*http://)(.*)(.html)(#.*)\\)', r'(\g<1>.md)', content)
+        return re.sub('\\((?!.*http://)(.*)(.html)(#.*)?\\)', r'(\g<1>.md)', content)
