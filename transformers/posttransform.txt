@@ -1,3 +1,4 @@
 Replace(\\n,\n)
 Replace(`\s\s`, )
 Replace(\s, )
+LinkFixer()
