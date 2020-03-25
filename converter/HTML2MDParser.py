@@ -18,21 +18,30 @@ class HTML2MDParser(HTMLParser, ABC):
         self._commands = []
 
     def handle_starttag(self, tag, attrs):
+        first = True
         if tag in self._rules.rules:
-            first = True
             for command in self._rules.rules.get(tag).commands:
-                cmd: Command = command.__copy__()
-                cmd.attrs = attrs
-                cmd.tag = tag
-                if len(self._commands) > 0:
-                    self._commands[-1].add_child(cmd)
-                    self._commands[-1].data += "[:child:]"
-                    cmd.ancestor = self._commands[-1]
-                self._commands.append(cmd)
-                if first:
-                    first = False
-                else:
-                    cmd.pop_more()
+                self.execute_command(attrs, command, first, tag)
+                first = False
+        for attr in attrs:
+            if attr[0] == "class":
+                for cl in attr[1].split():
+                    if self._rules.rules.get("."+cl) is not None:
+                        for command in self._rules.rules.get("."+cl).commands:
+                            self.execute_command(attrs, command, first, tag)
+                            first = False
+
+    def execute_command(self, attrs, command, first, tag):
+        cmd: Command = command.__copy__()
+        cmd.attrs = attrs
+        cmd.tag = tag
+        if len(self._commands) > 0:
+            self._commands[-1].add_child(cmd)
+            self._commands[-1].data += "[:child:]"
+            cmd.ancestor = self._commands[-1]
+        self._commands.append(cmd)
+        if not first:
+            cmd.pop_more()
 
     def handle_endtag(self, tag):
         if tag in self._rules.rules and len(self._commands) > 0:
