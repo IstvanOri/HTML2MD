@@ -1,1 +1,3 @@
 Replace(<br>,<br/>)
+Replace(<br/>,)
+RemoveWhiteSpace()

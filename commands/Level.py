@@ -23,7 +23,10 @@ class Level(Command):
         Always returns an empty string
         :return: ""
         """
-        result = ""
+        indent = ""
         for i in range(1, self._level):
-            result += self._leveling
-        return result + super().execute()
+            indent += self._leveling
+        result = ""
+        for line in super().execute().split("\\n"):
+            result += indent + line + "\\n"
+        return result[:-2]
