@@ -46,4 +46,6 @@ class HTML2MDParser(HTMLParser, ABC):
             self._commands[-1].data += data
 
     def result(self):
-        return self._roots[0].execute()
+        if len(self._roots) > 0:
+            return self._roots[0].execute()
+        return ""

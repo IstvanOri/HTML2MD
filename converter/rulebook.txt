@@ -25,6 +25,7 @@
 #
 # General HTML tags:
 html:Strip()
+head:Ignore()
 h1:Wrap(\n#\s,\n)
 h2:Wrap(\n##\s,\n)
 h3:Wrap(\n###\s,\n)
