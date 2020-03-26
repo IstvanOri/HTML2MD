@@ -16,31 +16,40 @@ class HTML2MDParser(HTMLParser, ABC):
         self._roots = []
         self._result = ""
         self._commands = []
+        self._is_root_command = True
+        self._last_encountered_tag = None
+        self._last_encountered_attributes = None
 
     def handle_starttag(self, tag, attrs):
-        first = True
+        self._is_root_command = True
+        self._last_encountered_tag = tag
+        self._last_encountered_attributes = attrs
         if tag in self._rules.rules:
             for command in self._rules.rules.get(tag).commands:
-                self.execute_command(attrs, command, first, tag)
-                first = False
+                self.execute_command(command)
+                self._is_root_command = False
         for attr in attrs:
-            if attr[0] == "class":
-                for cl in attr[1].split():
-                    if self._rules.rules.get("."+cl) is not None:
-                        for command in self._rules.rules.get("."+cl).commands:
-                            self.execute_command(attrs, command, first, tag)
-                            first = False
+            self.attribute_selector_handler(attr, "class", ".")
+            self.attribute_selector_handler(attr, "id", "#")
 
-    def execute_command(self, attrs, command, first, tag):
+    def attribute_selector_handler(self, attr, name, prefix):
+        if attr[0] == name:
+            for cl in attr[1].split():
+                if self._rules.rules.get(prefix + cl) is not None:
+                    for command in self._rules.rules.get(prefix + cl).commands:
+                        self.execute_command(command)
+                        self._is_root_command = False
+
+    def execute_command(self, command):
         cmd: Command = command.__copy__()
-        cmd.attrs = attrs
-        cmd.tag = tag
+        cmd.attrs = self._last_encountered_attributes
+        cmd.tag = self._last_encountered_tag
         if len(self._commands) > 0:
             self._commands[-1].add_child(cmd)
             self._commands[-1].data += "[:child:]"
             cmd.ancestor = self._commands[-1]
         self._commands.append(cmd)
-        if not first:
+        if not self._is_root_command:
             cmd.pop_more()
 
     def handle_endtag(self, tag):
