@@ -1,34 +1,34 @@
-# Rulebook
-#
-# Rule formats:
-#         selector:command(arguments)[>command(arguments)...]
-#     where
-#         selector is the name of the tag to trigger the command
-#         command is one of the following
-#             Ignore            - Ignores the content of the tag and any descendant content as well.
-#             Strip             - Removes any trailing whitespace line by line.
-#             Wrap              - Wraps the content of the tag by the given prefix and suffix. Optional third argument
-#                                 sets whether an empty content is allowed (default is false, empty content is skipped).
-#                                 The prefix or suffix can be a config property also (See Config below).
-#             WrapIn            - Same as Wrap, but a list of tags can be specified in the fourth argument, separated
-#                                 by ';'. If the tag has a parent tag listed then the Wrap is performed, otherwise the
-#                                 content without the given prefix and suffix is returned.
-#             WrapOut           - Same as WrapIn, but the given tag list is a blacklist, so if the tag is not listed
-#                                 then the Wrap is performed.
-#             WrapWithAttribute - Wraps the content of the tag as Wrap would do, but an attribute of the tag can be
-#                                 specified in the third argument, that attribute will be Wrapped also and appended to
-#                                 the Wrapped tag content.
-#             Config            - Modifies a configuration, these also can be used in Wrap. Currently supported:
-#                                 _bullet: bullet of list items. default is ' * '.
-#     composition:
-#         Composit rules can  be made by the '>' separator. In this case the commands are performed from right to lef.
-#
-# General HTML tags:
+// Rulebook
+//
+// Rule formats:
+//         selector:command(arguments)[>command(arguments)...]
+//     where
+//         selector is the name of the tag to trigger the command
+//         command is one of the following
+//             Ignore            - Ignores the content of the tag and any descendant content as well.
+//             Strip             - Removes any trailing whitespace line by line.
+//             Wrap              - Wraps the content of the tag by the given prefix and suffix. Optional third argument
+//                                 sets whether an empty content is allowed (default is false, empty content is skipped).
+//                                 The prefix or suffix can be a config property also (See Config below).
+//             WrapIn            - Same as Wrap, but a list of tags can be specified in the fourth argument, separated
+//                                 by ';'. If the tag has a parent tag listed then the Wrap is performed, otherwise the
+//                                 content without the given prefix and suffix is returned.
+//             WrapOut           - Same as WrapIn, but the given tag list is a blacklist, so if the tag is not listed
+//                                 then the Wrap is performed.
+//             WrapWithAttribute - Wraps the content of the tag as Wrap would do, but an attribute of the tag can be
+//                                 specified in the third argument, that attribute will be Wrapped also and appended to
+//                                 the Wrapped tag content.
+//             Config            - Modifies a configuration, these also can be used in Wrap. Currently supported:
+//                                 _bullet: bullet of list items. default is ' * '.
+//     composition:
+//         Composit rules can  be made by the '>' separator. In this case the commands are performed from right to lef.
+//
+// General HTML tags:
 html:Strip()
 head:Ignore()
-h1:Wrap(\n#\s,\n)
-h2:Wrap(\n##\s,\n)
-h3:Wrap(\n###\s,\n)
+h1:Wrap(\n//\s,\n)
+h2:Wrap(\n////\s,\n)
+h3:Wrap(\n//////\s,\n)
 p:WrapOut(\n,,False,table;ol;ul)
 div:WrapOut(,,False,table;ol;ul)
 i:Wrap(*,*)
@@ -46,9 +46,9 @@ li:Wrap(_bullet,\n)
 table:Indent(\s\s\s\s)>Table(\n\n,\n)
 tr:Wrap(,\n)
 td:Wrap(,\s|\s,True)
-# JavaScript related
+// JavaScript related
 noscript:Ignore()
 script:Ignore()
-# Framework specific XHTML tags
+// Framework specific XHTML tags
 footer:Ignore()
 tt:Wrap(`,`)

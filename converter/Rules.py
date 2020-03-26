@@ -23,7 +23,7 @@ class Rules():
         self._rules = {}
         rulebook_file = open(self.__location__+os.sep+"rulebook.txt", "r")
         for x in rulebook_file:
-            if not x.startswith("#"):
+            if not x.startswith("//"):
                 entry = x.split(":")
                 selector = entry[0]
                 setup = entry[1].split(">")
