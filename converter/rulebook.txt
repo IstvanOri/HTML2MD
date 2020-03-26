@@ -26,9 +26,9 @@
 // General HTML tags:
 html:Strip()
 head:Ignore()
-h1:Wrap(\n//\s,\n)
-h2:Wrap(\n////\s,\n)
-h3:Wrap(\n//////\s,\n)
+h1:Wrap(\n#\s,\n)
+h2:Wrap(\n##\s,\n)
+h3:Wrap(\n###\s,\n)
 p:WrapOut(\n,,False,table;ol;ul)
 div:WrapOut(,,False,table;ol;ul)
 i:Wrap(*,*)
