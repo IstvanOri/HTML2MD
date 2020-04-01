@@ -1,5 +1,5 @@
 from html2md.commands.Command import Command
-from html2md.commands import CommandConfigurationError
+from html2md.commands.CommandConfigurationError import CommandConfigurationError
 
 
 class Level(Command):
@@ -10,7 +10,8 @@ class Level(Command):
     def __init__(self, args):
         super().__init__()
         if len(args) != 1:
-            raise CommandConfigurationError("Level command takes exactly on argument: the string to use as leveling")
+            raise CommandConfigurationError("Indent("+",".join(args)+")", "Level command takes exactly on argument: "
+                                                                          "the string to use as leveling")
         self._leveling = args[0]
 
     def __copy__(self):

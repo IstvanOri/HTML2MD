@@ -1,5 +1,5 @@
 from html2md.commands.Command import Command
-from html2md.commands import CommandConfigurationError
+from html2md.commands.CommandConfigurationError import CommandConfigurationError
 
 
 class Indent(Command):
@@ -10,7 +10,8 @@ class Indent(Command):
     def __init__(self, args):
         super().__init__()
         if len(args) != 1:
-            raise CommandConfigurationError("Indent command takes exactly on argument: the string to use as Indenting")
+            raise CommandConfigurationError("Indent("+",".join(args)+")", "Indent command takes exactly one argument: "
+                                                                          "the string to use as Indenting")
         self._indenting = args[0]
 
     def __copy__(self):

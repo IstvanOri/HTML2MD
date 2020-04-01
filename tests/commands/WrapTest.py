@@ -1,10 +1,18 @@
 import unittest
 
 from html2md.commands import CommandConfigurationError
+from html2md.commands.CommandConfigurationError import CommandConfigurationError
 from html2md.commands.Wrap import Wrap
 
 
 class WrapTest(unittest.TestCase):
+
+    def runTest(self):
+        self.test_missconfiguration1()
+        self.test_missconfiguration4()
+        self.test_wrap()
+        self.test_wrap_empty_if_allowed()
+        self.test_wrap_empty_if_not_allowed()
 
     def test_missconfiguration1(self):
         with self.assertRaises(CommandConfigurationError):

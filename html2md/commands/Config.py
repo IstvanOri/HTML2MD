@@ -1,5 +1,5 @@
 from html2md.commands.Command import Command
-from html2md.commands import CommandConfigurationError
+from html2md.commands.CommandConfigurationError import CommandConfigurationError
 
 
 class Config(Command):

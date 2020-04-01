@@ -20,21 +20,25 @@ Transformations are configured in [pretransform.txt](data/pretransform.txt) and
  [postransform.txt](data/posttransform.txt)
  
  Currently available transformation methods:
+  - `LinkFixer()`
   - `Replace(target,replacemnet)`
+  - `RemoveWhiteSpace()`
   
 # Rules
 
 Rules are configured in [rulebook.txt](data/rulebook.txt)
  
 Currently available conversion commands:
+  - `Config(config_name, value)`
   - `Ignore()`
+  - `Indent(indentation_prefix)`
+  - `Level(indentation_prefix)`
   - `Strip()`
+  - `Table(prefix, suffix)`
   - `Wrap(prefix, suffix [, allow_empty])`
   - `WrapIn(prefix, suffix, allow_empty, tag_list)`
   - `WrapOut(prefix, suffix, allow_empty, tag_list)`
   - `WrapWithAttribute(prefix, suffix, attr_name, attr_prefix, attr_suffix)`
-  - `Config(config_name, value)`
-  - `Table(prefix, suffix)`
 
 For details please check the [rulebook.txt](data/rulebook.txt) file
   
