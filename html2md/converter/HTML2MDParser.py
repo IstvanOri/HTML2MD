@@ -1,8 +1,8 @@
 from abc import ABC
 from html.parser import HTMLParser
 
-from commands.Command import Command
-from converter.Rules import Rules
+from html2md.commands.Command import Command
+from html2md.converter.Rules import Rules
 
 
 class HTML2MDParser(HTMLParser, ABC):

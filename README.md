@@ -16,15 +16,15 @@ I also use this project to learn Python :)
  
 # Transformations
 
-Transformations are configured in [pretransform.txt](transformers/pretransform.txt) and
- [postransform.txt](transformers/posttransform.txt)
+Transformations are configured in [pretransform.txt](data/pretransform.txt) and
+ [postransform.txt](data/posttransform.txt)
  
  Currently available transformation methods:
   - `Replace(target,replacemnet)`
   
 # Rules
 
-Rules are configured in [rulebook.txt](converter/rulebook.txt)
+Rules are configured in [rulebook.txt](data/rulebook.txt)
  
 Currently available conversion commands:
   - `Ignore()`
@@ -36,5 +36,5 @@ Currently available conversion commands:
   - `Config(config_name, value)`
   - `Table(prefix, suffix)`
 
-For details please check the [rulebook.txt](converter/rulebook.txt) file
+For details please check the [rulebook.txt](data/rulebook.txt) file
   

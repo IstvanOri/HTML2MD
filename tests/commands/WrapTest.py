@@ -1,8 +1,7 @@
 import unittest
 
-from commands.Command import Command
-from commands.CommandConfigurationError import CommandConfigurationError
-from commands.Wrap import Wrap
+from html2md.commands import CommandConfigurationError
+from html2md.commands.Wrap import Wrap
 
 
 class WrapTest(unittest.TestCase):

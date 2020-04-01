@@ -1,5 +1,6 @@
 import re
-from transformers.Tranformation import Transformation
+
+from html2md.transformers.Tranformation import Transformation
 
 
 def _sanitize(input_):

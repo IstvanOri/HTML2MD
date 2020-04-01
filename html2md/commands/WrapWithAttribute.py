@@ -1,6 +1,4 @@
-from pprint import pprint
-
-from commands.Command import Command
+from html2md.commands.Command import Command
 
 
 class WrapWithAttribute(Command):

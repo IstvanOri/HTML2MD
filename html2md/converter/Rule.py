@@ -1,4 +1,4 @@
-from commands.Command import Command
+from html2md.commands.Command import Command
 
 
 class Rule():
