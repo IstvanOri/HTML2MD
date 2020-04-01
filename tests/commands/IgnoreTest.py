@@ -5,8 +5,5 @@ from html2md.commands.Ignore import Ignore
 
 class IgnoreTest(unittest.TestCase):
 
-    def runTest(self):
-        self.test_execution()
-
     def test_execution(self):
         self.assertEqual("", Ignore(()).execute())

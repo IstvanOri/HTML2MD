@@ -6,12 +6,6 @@ from html2md.commands.Indent import Indent
 
 class IndentTest(unittest.TestCase):
 
-    def runTest(self):
-        self.test_missconfiguration0()
-        self.test_missconfiguration2()
-        self.test_with_empty_data()
-        self.test_with_data()
-
     def test_missconfiguration0(self):
         with self.assertRaises(CommandConfigurationError):
             Indent(())
