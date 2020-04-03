@@ -35,7 +35,7 @@ class Transformer:
 
     def _read_config(self, file_name: str) -> [Transformation]:
         transformations: [Transformation] = []
-        transformations_file = open(LOCATIONS["DATA"] + os.sep + file_name + ".txt", "r")
+        transformations_file = open(LOCATIONS["CONFIG_DEFAULT"] + os.sep + file_name + ".txt", "r")
         for x in transformations_file:
             if not x.startswith("#"):
                 transformation_name = x[:x.find("(")]

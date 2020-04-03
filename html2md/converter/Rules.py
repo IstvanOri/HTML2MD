@@ -21,7 +21,7 @@ class Rules():
 
     def __init__(self):
         self._rules = {}
-        rulebook_file = open(LOCATIONS["DATA"]+os.sep+"rulebook.txt", "r")
+        rulebook_file = open(LOCATIONS["CONFIG_DEFAULT"]+os.sep+"rulebook.txt", "r")
         for x in rulebook_file:
             if not x.startswith("//"):
                 entry = x.split(":")
