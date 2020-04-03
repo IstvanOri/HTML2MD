@@ -58,7 +58,7 @@ class HTML2MDParser(HTMLParser, ABC):
                 pass
 
     def handle_data(self, data):
-        if len(self._commands) == 1:
+        if len(self._commands) >= 1 and len(self._roots) == 0:
             self._roots.append(self._commands[0])
         if len(self._commands) > 0:
             self._commands[-1].data += data

@@ -1,6 +1,6 @@
 import os
 
-from html2md import LOCATION
+from html2md import LOCATIONS
 from html2md.converter.Rule import Rule
 
 
@@ -21,7 +21,7 @@ class Rules():
 
     def __init__(self):
         self._rules = {}
-        rulebook_file = open(LOCATION+os.sep+"data"+os.sep+"rulebook.txt", "r")
+        rulebook_file = open(LOCATIONS["DATA"]+os.sep+"rulebook.txt", "r")
         for x in rulebook_file:
             if not x.startswith("//"):
                 entry = x.split(":")

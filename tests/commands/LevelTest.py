@@ -2,7 +2,6 @@ import unittest
 
 from html2md.commands.Command import Command
 from html2md.commands.CommandConfigurationError import CommandConfigurationError
-from html2md.commands.Config import Config
 from html2md.commands.Level import Level
 
 

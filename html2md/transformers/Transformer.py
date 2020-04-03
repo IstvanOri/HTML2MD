@@ -2,7 +2,7 @@ import os
 
 
 # TODO: duplicate code, see Rules.py
-from html2md import LOCATION
+from html2md import LOCATIONS
 from html2md.transformers.Tranformation import Transformation
 
 
@@ -16,8 +16,6 @@ def _get_class(kls):
 
 
 class Transformer:
-
-    __location__ = os.path.realpath(os.path.join(os.getcwd(), os.path.dirname(__file__)))
 
     def __init__(self):
         self._pre_transformations: [Transformation] = self._read_config("pretransform")
@@ -37,7 +35,7 @@ class Transformer:
 
     def _read_config(self, file_name: str) -> [Transformation]:
         transformations: [Transformation] = []
-        transformations_file = open(LOCATION + os.sep + "data" + os.sep + file_name + ".txt", "r")
+        transformations_file = open(LOCATIONS["DATA"] + os.sep + file_name + ".txt", "r")
         for x in transformations_file:
             if not x.startswith("#"):
                 transformation_name = x[:x.find("(")]
