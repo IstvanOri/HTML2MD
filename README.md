@@ -1,4 +1,4 @@
-![Python application](https://github.com/IstvanOri/HTML2MD/workflows/Python%20application/badge.svg)
+![PyTest](https://github.com/IstvanOri/HTML2MD/workflows/PyTest/badge.svg)
 
 # HTML2MD
 Configurable HTML to MarkDown converter
