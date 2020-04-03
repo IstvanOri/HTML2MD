@@ -52,3 +52,16 @@ td:Wrap(,\s|\s,True)
 // JavaScript related
 noscript:Ignore()
 script:Ignore()
+// Framework specific XHTML tags
+footer:Ignore()
+tt:Wrap(`,`)
+// Custom - Confluence to Markdown-extra
+// header:Ignore()
+.ht-breadcrumb:Ignore()
+aside:Ignore()
+nav:Ignore()
+.syntaxhighlighter:Indent(\s\s\s\s)>Wrap(\n\n```\n,\n```\n\n)
+.toc-indentation:Ignore()
+.admonition-warning:Wrap(\n&gt;\s{warning}\s,\n\n)
+.admonition-info:Wrap(\n&gt;\s{info}\s,\n\n)
+.admonition-note:Wrap(\n&gt;\s{primary}\s,\n\n)
