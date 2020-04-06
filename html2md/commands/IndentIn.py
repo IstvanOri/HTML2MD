@@ -22,7 +22,6 @@ class IndentIn(Indent):
 
     def execute(self) -> str:
         p: Command = self.ancestor
-        print(p.tag)
         while p is not None:
             if p.tag in self._tag_list:
                 return super().execute()

@@ -15,7 +15,7 @@ class IndentTest(unittest.TestCase):
             Indent(("a", "b"))
 
     def test_with_empty_data(self):
-        self.assertEqual("--", Indent(("--",)).execute())
+        self.assertEqual("", Indent(("--",)).execute())
 
     def test_with_data(self):
         cmd = Indent(("  ",))

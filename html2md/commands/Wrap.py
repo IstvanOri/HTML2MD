@@ -1,5 +1,6 @@
 from html2md.commands.Command import Command
 from html2md.commands.CommandConfigurationError import CommandConfigurationError
+from html2md.commands.VariableResolver import VariableResolver
 
 
 class Wrap(Command):
@@ -23,18 +24,9 @@ class Wrap(Command):
         return Wrap((self._prefix, self._suffix, self._allow_empty))
 
     def execute(self) -> str:
-        prefix = self._prefix
-        try:
-            if getattr(Command, self._prefix) is not None:
-                prefix = str(getattr(Command, self._prefix))
-        except AttributeError:
-            pass
-        suffix = self._suffix
-        try:
-            if getattr(Command, self._suffix) is not None:
-                suffix = str(getattr(Command, self._suffix))
-        except AttributeError:
-            pass
+        resolver = VariableResolver()
+        prefix = resolver.resolve(self._prefix)
+        suffix = resolver.resolve(self._suffix)
         content = super().execute()
         if len(content) > 0 and not content.isspace() or self._allow_empty:
             return prefix + content + suffix

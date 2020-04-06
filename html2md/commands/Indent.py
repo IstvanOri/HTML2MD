@@ -20,5 +20,8 @@ class Indent(Command):
     def execute(self) -> str:
         result = ""
         for line in super().execute().split("\\n"):
-            result += self._indenting + line + "\\n"
+            if len(line) == 0:
+                result += "\\n"
+            else:
+                result += self._indenting + line + "\\n"
         return result[:-2]
