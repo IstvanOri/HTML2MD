@@ -9,4 +9,5 @@ class RemoveWhiteSpace(Transformation):
         pass
 
     def execute(self, content: str) -> str:
-        return re.sub(' +', ' ', content).replace("\n", "").replace("\r", "").replace("\t", "")
+        result = re.sub(' +', ' ', content).replace("\n", "").replace("\r", "").replace("\t", "")
+        return re.sub('> <', '><', result)
