@@ -47,3 +47,12 @@ class DefaultAcceptanceTest(unittest.TestCase):
 
     def test_tables(self):
         self.run_case("tables.html")
+
+    def test_table_headings(self):
+        self.run_case("table_headings.html")
+
+    def test_table_colspan(self):
+        self.run_case("table_colspan.html")
+
+    def test_table_rowspan(self):
+        self.run_case("table_rowspan.html")

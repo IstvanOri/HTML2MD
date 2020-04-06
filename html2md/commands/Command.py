@@ -14,6 +14,8 @@ class Command:
     """
 
     _bullet = " * "
+    _table_cell_separator = " | "
+    _table_head_separator = "---"
     _level = 0
 
     def __init__(self):
