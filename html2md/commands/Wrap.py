@@ -18,7 +18,7 @@ class Wrap(Command):
         self._suffix: str = args[1]
         self._allow_empty: bool = False
         if len(args) > 2:
-            self._allow_empty = args[2]
+            self._allow_empty = args[2] == "True"
 
     def __copy__(self):
         return Wrap((self._prefix, self._suffix, self._allow_empty))

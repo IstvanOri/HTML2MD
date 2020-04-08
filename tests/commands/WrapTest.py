@@ -28,7 +28,7 @@ class WrapTest(unittest.TestCase):
         self.assertEqual("prexsuff", cmd.execute())
 
     def test_wrap_empty_if_allowed(self):
-        cmd = Wrap(("pre","suff", True))
+        cmd = Wrap(("pre","suff", "True"))
         cmd.data = ""
         self.assertEqual("presuff", cmd.execute())
 
