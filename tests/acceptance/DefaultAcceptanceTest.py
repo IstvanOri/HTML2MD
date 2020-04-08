@@ -56,3 +56,6 @@ class DefaultAcceptanceTest(unittest.TestCase):
 
     def test_table_rowspan(self):
         self.run_case("table_rowspan.html")
+
+    def test_html_special_chars(self):
+        self.run_case("html_special_chars.html")

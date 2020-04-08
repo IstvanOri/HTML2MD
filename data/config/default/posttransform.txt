@@ -1,6 +1,6 @@
 Replace(\\n,\n)
-Replace(`\s\s`, )
-Replace(\s, )
+Replace(`\\s\\s`, )
+Replace(\\s, )
 LinkFixer()
 Replace(.md,)
 Replace(&gt;,>)
