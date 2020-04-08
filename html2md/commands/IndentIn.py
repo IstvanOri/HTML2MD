@@ -9,12 +9,16 @@ class IndentIn(Indent):
     """
 
     def __init__(self, args):
-        if len(args) != 2:
-            raise CommandConfigurationError("IndentIn("+",".join(args)+")", "IndentIn command takes exactly two "
+        if len(args) < 2 or len(args) > 3:
+            raise CommandConfigurationError("IndentIn("+",".join(args)+")", "IndentIn command takes two non-optional"
                                                                             "argument: the string to use as indent "
                                                                             "and the list of tags names to restrict "
-                                                                            "indentation")
-        super().__init__((args[0],))
+                                                                            "indentation and an optional for first "
+                                                                            "line indentation")
+        if len(args) > 2:
+            super().__init__((args[0], args[2]))
+        else:
+            super().__init__((args[0], ))
         self._tag_list: [str] = args[1].split(";")
 
     def __copy__(self):
