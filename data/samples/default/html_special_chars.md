@@ -3,4 +3,4 @@
 
  *  `>`  is >
  *  `<`  is <
- *  `<tag>`  is an html tag
+ *  `&lt;tag&gt;`  is an html tag
