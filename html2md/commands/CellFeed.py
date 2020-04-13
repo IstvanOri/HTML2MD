@@ -12,9 +12,13 @@ class CellFeed(Command):
 
     def execute(self) -> str:
         cell_content = super().execute()
-        Table.CONTENT_BUFFER.cell_feed(cell_content)
+        table = self.ancestor
+        while table.tag != "table":
+            table = table.ancestor
+        cell_content = cell_content.replace("\\n", " ")
+        table._content_buffer.cell_feed(cell_content)
         for attr in self._attrs:
             if attr[0] == "colspan":
                 for i in range(1, int(attr[1])):
-                    Table.CONTENT_BUFFER.cell_feed("")
+                    table._content_buffer.cell_feed("")
         return ""

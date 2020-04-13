@@ -12,5 +12,8 @@ class RowFeed(Command):
     def execute(self) -> str:
         for child in self._children:
             child.execute()
-        Table.CONTENT_BUFFER.row_feed()
+        table = self.ancestor
+        while table.tag != "table":
+            table = table.ancestor
+        table._content_buffer.row_feed()
         return ""
