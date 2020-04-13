@@ -55,18 +55,3 @@ th:CellFeed()
 // JavaScript related
 noscript:Ignore()
 script:Ignore()
-// Framework specific XHTML tags
-footer:Ignore()
-tt:Wrap(`,`)
-// Custom - Confluence to Markdown-extra
-// header:Ignore()
-#ht-breadcrumb:Ignore()
-#ht-headerbar:Ignore()
-aside:Ignore()
-nav:Ignore()
-.line:Wrap(\n,)
-.syntaxhighlighter:Wrap(\n\n```\n,\n```\n\n)
-.toc-indentation:Ignore()
-.admonition-warning:Wrap(\n&gt;\s{warning}\s,\n\n)
-.admonition-info:Wrap(\n&gt;\s{info}\s,\n\n)
-.admonition-note:Wrap(\n&gt;\s{primary}\s,\n\n)
