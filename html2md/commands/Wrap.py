@@ -25,7 +25,7 @@ class Wrap(Command):
             self._line_by_line = args[3] == "True"
 
     def __copy__(self):
-        return Wrap((self._prefix, self._suffix, self._allow_empty, self._line_by_line))
+        return Wrap((self._prefix, self._suffix, str(self._allow_empty), str(self._line_by_line)))
 
     def execute(self) -> str:
         resolver = VariableResolver()
@@ -35,8 +35,10 @@ class Wrap(Command):
         result = ""
         if (len(content) > 0 and not content.isspace()) or self._allow_empty:
             if self._line_by_line:
-                for line in content:
-                    result += prefix + line + suffix
+                for line in content.split("\\n"):
+                    if (len(line) > 0 and not line.isspace()) or self._allow_empty:
+                        result += prefix + line + suffix + "\\n"
+                result = result[:-2]
             else:
                 result = prefix + content + suffix
         return result

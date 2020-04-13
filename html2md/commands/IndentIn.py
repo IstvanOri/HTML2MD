@@ -16,13 +16,14 @@ class IndentIn(Indent):
                                                                             "indentation and an optional for first "
                                                                             "line indentation")
         if len(args) > 2:
-            super().__init__((args[0], args[2]))
+            super().__init__((args[0], args[1]))
+            self._tag_list: [str] = args[2].split(";")
         else:
             super().__init__((args[0], ))
-        self._tag_list: [str] = args[1].split(";")
+            self._tag_list: [str] = args[1].split(";")
 
     def __copy__(self):
-        return IndentIn((self._indenting, ";".join(self._tag_list)))
+        return IndentIn((self._indenting, str(self._is_first_line_indents), ";".join(self._tag_list)))
 
     def execute(self) -> str:
         p: Command = self.ancestor

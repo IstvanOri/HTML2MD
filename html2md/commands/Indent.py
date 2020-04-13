@@ -20,7 +20,7 @@ class Indent(Command):
             self._is_first_line_indents = args[1] == "True"
 
     def __copy__(self):
-        return Indent((self._indenting, self._is_first_line_indents))
+        return Indent((self._indenting, str(self._is_first_line_indents)))
 
     def execute(self) -> str:
         result = ""

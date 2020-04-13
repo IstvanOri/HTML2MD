@@ -9,7 +9,7 @@ class WrapIn(Wrap):
         self._tag_list: [str] = args[4].split(";")
 
     def __copy__(self):
-        return WrapIn((self._prefix, self._suffix, self._allow_empty, self._line_by_line, ";".join(self._tag_list)))
+        return WrapIn((self._prefix, self._suffix, str(self._allow_empty), str(self._line_by_line), ";".join(self._tag_list)))
 
     def execute(self) -> str:
         p: Command = self.ancestor
