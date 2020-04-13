@@ -5,11 +5,11 @@ from html2md.commands.Wrap import Wrap
 class WrapOut(Wrap):
 
     def __init__(self, args):
-        super().__init__((args[0], args[1], args[2]))
-        self._tag_list: [str] = args[3].split(";")
+        super().__init__((args[0], args[1], args[2], args[3]))
+        self._tag_list: [str] = args[4].split(";")
 
     def __copy__(self):
-        return WrapOut((self._prefix, self._suffix, self._allow_empty, ";".join(self._tag_list)))
+        return WrapOut((self._prefix, self._suffix, self._allow_empty, self._line_by_line, ";".join(self._tag_list)))
 
     def execute(self) -> str:
         p: Command = self.ancestor

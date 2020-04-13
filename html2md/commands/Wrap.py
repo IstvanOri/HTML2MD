@@ -10,24 +10,33 @@ class Wrap(Command):
 
     def __init__(self, args):
         super().__init__()
-        if len(args) < 2 or len(args) > 3:
+        if len(args) < 2 or len(args) > 4:
             raise CommandConfigurationError("Wrap("+",".join(args)+")", "Wrap command takes two arguments: prefix and "
-                                                                        "suffix and an optional third argument "
-                                                                        "allow_empty")
+                                                                        "suffix and an optional third and fourth "
+                                                                        "argument for allow_empty and line-by-line "
+                                                                        "wrap")
         self._prefix: str = args[0]
         self._suffix: str = args[1]
         self._allow_empty: bool = False
         if len(args) > 2:
             self._allow_empty = args[2] == "True"
+        self._line_by_line: bool = False
+        if len(args) > 3:
+            self._line_by_line = args[3] == "True"
 
     def __copy__(self):
-        return Wrap((self._prefix, self._suffix, self._allow_empty))
+        return Wrap((self._prefix, self._suffix, self._allow_empty, self._line_by_line))
 
     def execute(self) -> str:
         resolver = VariableResolver()
         prefix = resolver.resolve(self._prefix)
         suffix = resolver.resolve(self._suffix)
         content = super().execute()
+        result = ""
         if (len(content) > 0 and not content.isspace()) or self._allow_empty:
-            return prefix + content + suffix
-        return ""
+            if self._line_by_line:
+                for line in content:
+                    result += prefix + line + suffix
+            else:
+                result = prefix + content + suffix
+        return result

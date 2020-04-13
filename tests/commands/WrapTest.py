@@ -18,9 +18,9 @@ class WrapTest(unittest.TestCase):
         with self.assertRaises(CommandConfigurationError):
             Wrap(("a"))
 
-    def test_missconfiguration4(self):
+    def test_missconfiguration5(self):
         with self.assertRaises(CommandConfigurationError):
-            Wrap(("a", "b", "c", "d"))
+            Wrap(("a", "b", "c", "d", "e"))
 
     def test_wrap(self):
         cmd = Wrap(("pre","suff"))
