@@ -7,6 +7,7 @@ Table rows start with a tr tag.
 
 Table data start with a td tag.
 
+---
 ## 1 Column:
 
 
@@ -15,6 +16,7 @@ Table data start with a td tag.
 200
 
 
+---
 ## 3 Rows and 3 Columns:
 
 
@@ -22,4 +24,6 @@ Table data start with a td tag.
 --- | --- | ---
 400 | 500 | 600
 700 | 800 | 900
+
+
 

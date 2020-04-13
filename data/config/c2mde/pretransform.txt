@@ -1,2 +1,1 @@
-Replace(<br>,<br/>)
 RemoveWhiteSpace()

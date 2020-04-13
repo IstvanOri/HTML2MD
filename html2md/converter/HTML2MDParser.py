@@ -53,6 +53,9 @@ class HTML2MDParser(HTMLParser, ABC):
             cmd.pop_more()
 
     def handle_endtag(self, tag):
+        if tag == "br":
+            print("br")
+            self.handle_starttag("br", [])
         if tag in self._rules.rules and len(self._commands) > 0:
             while self._commands.pop().needs_more_pop():
                 pass

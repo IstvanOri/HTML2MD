@@ -1,6 +1,7 @@
 Replace(\\n,\n)
 Replace(`\\s\\s`, )
 Replace(\\s, )
+Replace(\\t,\t)
 LinkFixer()
 Replace(.md,)
 Replace(&gt;,>)

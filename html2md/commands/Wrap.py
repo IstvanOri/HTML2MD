@@ -28,6 +28,6 @@ class Wrap(Command):
         prefix = resolver.resolve(self._prefix)
         suffix = resolver.resolve(self._suffix)
         content = super().execute()
-        if len(content) > 0 and not content.isspace() or self._allow_empty:
+        if (len(content) > 0 and not content.isspace()) or self._allow_empty:
             return prefix + content + suffix
         return ""

@@ -30,6 +30,9 @@ class DefaultAcceptanceTest(unittest.TestCase):
     def test_paragraphs(self):
         self.run_case("paragraphs.html")
 
+    def test_paragraphs2(self):
+        self.run_case("paragraphs2.html")
+
     def test_basic_link(self):
         self.run_case("basic_link.html")
 
@@ -59,3 +62,15 @@ class DefaultAcceptanceTest(unittest.TestCase):
 
     def test_html_special_chars(self):
         self.run_case("html_special_chars.html")
+
+    def test_basic_button(self):
+        self.run_case("basic_button.html")
+
+    def test_headings_hr(self):
+        self.run_case("headings_hr.html")
+
+    def test_line_breaks(self):
+        self.run_case("line_breaks.html")
+
+    def test_pre(self):
+        self.run_case("pre.html")
