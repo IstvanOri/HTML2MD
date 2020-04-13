@@ -27,17 +27,18 @@ class Table(Command):
         result: str = ""
         for child in self._children:
             child.execute()
-        result += Command._table_cell_separator.join(self.CONTENT_BUFFER.rows[0])
+        cell_separator = Command._table_cell_separator
+        result += cell_separator + cell_separator.join(self.CONTENT_BUFFER.rows[0]) + cell_separator
         result += "\\n"
         row_sep = [Command._table_head_separator] * len(self.CONTENT_BUFFER.rows[0])
-        result += Command._table_cell_separator.join(row_sep)
+        result += cell_separator + cell_separator.join(row_sep) + cell_separator
         result += "\\n"
         for row in self.CONTENT_BUFFER.rows[1:]:
             for i in range(len(row), len(self.CONTENT_BUFFER.rows[0])):
                 row.reverse()
                 row.append("")
                 row.reverse()
-            result += Command._table_cell_separator.join(row)
+            result += cell_separator + cell_separator.join(row) + cell_separator
             result += "\\n"
         self.CONTENT_BUFFER.clear()
         return self._prefix + result + self._suffix
