@@ -74,3 +74,6 @@ class DefaultAcceptanceTest(unittest.TestCase):
 
     def test_pre(self):
         self.run_case("pre.html")
+
+    def test_html_formatting(self):
+        self.run_case("html_formatting.html")
