@@ -1,3 +1,4 @@
 Replace(<br>,<br/>)
+Replace(<br/></strong>,</strong><br/>)
 Replace(<br/>,\\n\\n)
 RemoveWhiteSpace()

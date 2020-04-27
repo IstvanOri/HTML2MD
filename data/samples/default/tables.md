@@ -1,4 +1,5 @@
 
+
 ## HTML Tables
 
 HTML tables start with a table tag.
@@ -8,6 +9,7 @@ Table rows start with a tr tag.
 Table data start with a td tag.
 
 ---
+
 ## 1 Column:
 
 
@@ -17,6 +19,7 @@ Table data start with a td tag.
 
 
 ---
+
 ## 3 Rows and 3 Columns:
 
 
