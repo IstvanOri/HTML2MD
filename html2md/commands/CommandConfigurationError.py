@@ -1,5 +1,5 @@
 class CommandConfigurationError(Exception):
-    """Exception raised missconfiguration in rulebook
+    """Exception raised by misconfiguration in rulebook
 
     Attributes:
         expression -- input expression in which the error occurred

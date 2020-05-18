@@ -8,6 +8,9 @@ class Config(Command):
 
     Currently supported configs:
         _bullet (default: ' * ')
+        _table_cell_separator (default: ' | ')
+        _table_head_separator (default: '---')
+        _level (default: 0)
     """
 
     def __init__(self, args):
