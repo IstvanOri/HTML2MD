@@ -33,13 +33,13 @@ Rules are configured in [rulebook.txt](data/rulebook.txt)
 Currently available conversion commands:
   - `Config(config_name, value)`
   - `Ignore()`
-  - `Indent(indentation_prefix)`
-  - `Level(indentation_prefix)`
+  - `Indent(indentation_prefix, is_firstline_indents)`
+  - `IndentIn(indentation_prefix, is_firstline_indents, tag_list)`
   - `Strip()`
   - `Table(prefix, suffix)`
-  - `Wrap(prefix, suffix [, allow_empty])`
-  - `WrapIn(prefix, suffix, allow_empty, tag_list)`
-  - `WrapOut(prefix, suffix, allow_empty, tag_list)`
+  - `Wrap(prefix, suffix [, allow_empty, line_by_line])`
+  - `WrapIn(prefix, suffix[, allow_empty, line_by_line], tag_list)`
+  - `WrapOut(prefix, suffix[, allow_empty, line_by_line], tag_list)`
   - `WrapWithAttribute(prefix, suffix, attr_name, attr_prefix, attr_suffix)`
 
 For details please check the [rulebook.txt](data/rulebook.txt) file
