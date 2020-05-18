@@ -19,6 +19,6 @@ class LinkFixer(Transformation):
         pass
 
     def execute(self, content: str) -> str:
-        local_links = re.compile(r'\((?!\s*http[s]?://)(\S*)(\.html)(#.*)?\)')
-        result = re.sub(local_links, r'(\g<1>.md)', content)
+        local_links = re.compile(r'\((?!\s*http)([^\[\]]*)(\.html)(.*)\)')
+        result = re.sub(local_links, r'(\g<1>.md\g<3>)', content)
         return result
