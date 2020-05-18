@@ -18,8 +18,8 @@ I also use this project to learn Python :)
  
 # Transformations
 
-Transformations are configured in [pretransform.txt](data/pretransform.txt) and
- [postransform.txt](data/posttransform.txt)
+Transformations are configured in [pretransform.txt](data/config/default/pretransform.txt) and
+ [postransform.txt](data/config/default/posttransform.txt)
  
  Currently available transformation methods:
   - `LinkFixer()`
@@ -28,7 +28,7 @@ Transformations are configured in [pretransform.txt](data/pretransform.txt) and
   
 # Rules
 
-Rules are configured in [rulebook.txt](data/rulebook.txt)
+Rules are configured in [rulebook.txt](data/config/default/rulebook.txt)
  
 Currently available conversion commands:
   - `Config(config_name, value)`
@@ -42,5 +42,5 @@ Currently available conversion commands:
   - `WrapOut(prefix, suffix[, allow_empty, line_by_line], tag_list)`
   - `WrapWithAttribute(prefix, suffix, attr_name, attr_prefix, attr_suffix)`
 
-For details please check the [rulebook.txt](data/rulebook.txt) file
+For details please check the [rulebook.txt](data/config/default/rulebook.txt) file
   
