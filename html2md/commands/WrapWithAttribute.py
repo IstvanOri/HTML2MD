@@ -20,4 +20,7 @@ class WrapWithAttribute(Command):
             if attr[0] == self._attr_name:
                 attr_part += attr[1]
         attr_part += self._attr_suffix
-        return self._prefix + super().execute() + self._suffix + attr_part
+        content = super().execute()
+        if len(content) == 0:
+            return ""
+        return self._prefix + content + self._suffix + attr_part
