@@ -26,7 +26,7 @@ class Rules():
             if not x.startswith("//"):
                 entry = x.split(":")
                 selector = entry[0]
-                setup = entry[1].split(">")
+                setup = entry[1].split(">>")
                 rule = Rule(selector)
                 for command in setup:
                     command_name = command[:command.find("(")]
