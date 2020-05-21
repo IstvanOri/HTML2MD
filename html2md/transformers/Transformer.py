@@ -36,7 +36,8 @@ class Transformer:
     def _read_config(self, file_name: str) -> [Transformation]:
         transformations: [Transformation] = []
         transformations_file = open(LOCATIONS["CONFIG_DEFAULT"] + os.sep + file_name + ".txt", "r")
-        for x in transformations_file:
+        for line in transformations_file:
+            x = u''+line
             if not x.startswith("#"):
                 transformation_name = x[:x.find("(")]
                 transformation_args = x[x.find("(")+1:x.rfind(")")]
