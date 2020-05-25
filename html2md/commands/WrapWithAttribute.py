@@ -10,9 +10,10 @@ class WrapWithAttribute(Command):
         self._attr_name: str = args[2]
         self._attr_prefix: str = args[3]
         self._attr_suffix: str = args[4]
+        self._allow_empty: str = args[5]
 
     def __copy__(self):
-        return WrapWithAttribute((self._prefix, self._suffix, self._attr_name, self._attr_prefix, self._attr_suffix))
+        return WrapWithAttribute((self._prefix, self._suffix, self._attr_name, self._attr_prefix, self._attr_suffix, self._allow_empty))
 
     def execute(self) -> str:
         attr_part = self._attr_prefix
@@ -21,6 +22,6 @@ class WrapWithAttribute(Command):
                 attr_part += attr[1]
         attr_part += self._attr_suffix
         content = super().execute()
-        if len(content) == 0:
+        if len(content) == 0 and not self._allow_empty:
             return ""
         return self._prefix + content + self._suffix + attr_part
