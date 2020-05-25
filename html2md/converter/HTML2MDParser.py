@@ -24,13 +24,15 @@ class HTML2MDParser(HTMLParser, ABC):
         self._is_root_command = True
         self._last_encountered_tag = tag
         self._last_encountered_attributes = attrs
+        for attr in attrs:
+            if self.attribute_selector_handler(attr, "class", "."):
+                return
+            if self.attribute_selector_handler(attr, "id", "#"):
+                return
         if tag in self._rules.rules:
             for command in self._rules.rules.get(tag).commands:
                 self.execute_command(command)
                 self._is_root_command = False
-        for attr in attrs:
-            self.attribute_selector_handler(attr, "class", ".")
-            self.attribute_selector_handler(attr, "id", "#")
 
     def attribute_selector_handler(self, attr, name, prefix):
         if attr[0] == name:
@@ -39,6 +41,8 @@ class HTML2MDParser(HTMLParser, ABC):
                     for command in self._rules.rules.get(prefix + cl).commands:
                         self.execute_command(command)
                         self._is_root_command = False
+                    return True
+        return False
 
     def execute_command(self, command):
         cmd: Command = command.__copy__()
