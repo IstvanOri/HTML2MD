@@ -21,7 +21,9 @@ def run(argv):
                 if file.endswith(".html"):
                     result = convert(root+os.sep+file)
                     relative_path = os.path.relpath(root, argv[1])
-                    write(result, argv[2] + os.sep + relative_path + os.sep+file.replace(".html",".md"))
+                    transformer = Transformer()
+                    file_to_write = transformer.filename_transform(file)
+                    write(result, argv[2] + os.sep + relative_path + os.sep+file_to_write)
 
 
 def convert(file_name: str) -> str:
@@ -44,7 +46,7 @@ def write(content: str, file_name: str):
         except OSError as exc:  # Guard against race condition
             if exc.errno != errno.EEXIST:
                 raise
-
+    print("writing "+file_name)
     f = open(file_name, "wb")
     f.write(content.encode('utf-8'))
     f.flush()
