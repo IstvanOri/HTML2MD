@@ -18,5 +18,8 @@ setuptools.setup(
         "License :: Beer License",
         "Operating System :: OS Independent",
     ],
+    install_requires=[
+        'python-slugify',
+    ],
     python_requires='>=3.6',
 )
