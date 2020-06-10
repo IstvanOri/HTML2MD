@@ -20,6 +20,7 @@ class Transformer:
     def __init__(self):
         self._pre_transformations: [Transformation] = self._read_config("pretransform")
         self._post_transformations: [Transformation] = self._read_config("posttransform")
+        self._filename_transformations: [Transformation] = self._read_config("filenametransform")
 
     def pre_transform(self, target):
         result = target
@@ -30,6 +31,12 @@ class Transformer:
     def post_transform(self, target):
         result = target
         for tr in self._post_transformations:
+            result = tr.execute(result)
+        return result
+
+    def filename_transform(self, target):
+        result = target
+        for tr in self._filename_transformations:
             result = tr.execute(result)
         return result
 

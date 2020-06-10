@@ -14,6 +14,9 @@ def _sanitize(input_):
 
 
 class LinkFixer(Transformation):
+    """
+    Transformation that changes all relative links to point to .md files instead of .html files.
+    """
 
     def __init__(self, args):
         pass

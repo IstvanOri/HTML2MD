@@ -11,6 +11,9 @@ def whitespace_escape(param: str):
 
 
 class RemoveWhiteSpace(Transformation):
+    """
+    Transformation that removes unnecessary white-spaces. Keeps white-spaces in code and pre elements.
+    """
 
     def __init__(self, args):
         pass

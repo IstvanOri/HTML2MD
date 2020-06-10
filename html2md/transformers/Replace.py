@@ -5,6 +5,11 @@ from html2md.transformers.Tranformation import Transformation
 
 
 class Replace(Transformation):
+    """
+    Transformation that replaces all occurrences of a string give in the first argument to another one given in the
+    second argument. This Transformation accepts an optional third argument, if a line matches that argument the
+    replacing is disabled until another matching line found.
+    """
 
     def __init__(self, args):
         self._from_ = args[0]
