@@ -16,12 +16,21 @@ class Slugify(Transformation):
     def __init__(self, args):
         self._prefix_ = args[0]
         self._suffix_ = args[1]
+        self._separator_ = args[2]
         self._pattern_ = ".+"
-        if len(args) > 2:
-            self._pattern_ = args[2]
+        if len(args) > 3:
+            self._pattern_ = args[3]
+        self._split_ = "\n"
+        if len(args) > 4:
+            self._split_ = args[4]
 
     def execute(self, content: str) -> str:
-        result = content
+        result = ""
         links = re.compile(r'({})({})({})'.format(self._prefix_, self._pattern_, self._suffix_))
-        result = re.sub(links, lambda m: m.group(1)+slugify(m.group(2))+m.group(3), result)
+        first = True
+        for part in content.split(self._split_):
+            if not first:
+                result += self._split_
+            first = False
+            result += re.sub(links, lambda m: m.group(1)+slugify(m.group(2), regex_pattern=self._separator_)+m.group(3), part)
         return result
