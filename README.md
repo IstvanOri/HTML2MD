@@ -44,3 +44,12 @@ Currently available conversion commands:
 
 For details please check the [rulebook.txt](data/config/default/rulebook.txt) file
   
+# How to Run
+
+```
+main.py [input_dir] [output_dir]
+```
+Where
+ - `input_dir` is the directory in which the html files are
+ - `output_dir` is the directory to write .md files to in the same hierarchy as in the `input_dir`
+ 
