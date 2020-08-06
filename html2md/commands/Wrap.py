@@ -27,13 +27,23 @@ class Wrap(Command):
     def __copy__(self):
         return Wrap((self._prefix, self._suffix, str(self._allow_empty), str(self._line_by_line)))
 
+    def _isonlyspace_(self, content:str):
+        if len(content) == 0:
+            return True
+        if content.isspace():
+            return True
+        stripped = content.replace("\\n", "").replace("\\s", "").replace("\\t", "")
+        if len(stripped) == 0 or stripped.isspace():
+            return True
+        return False
+
     def execute(self) -> str:
         resolver = VariableResolver()
         prefix = resolver.resolve(self._prefix)
         suffix = resolver.resolve(self._suffix)
         content = super().execute()
         result = ""
-        if (len(content) > 0 and not content.isspace()) or self._allow_empty:
+        if not self._isonlyspace_(content) or self._allow_empty:
             if self._line_by_line:
                 for line in content.split("\\n"):
                     if (len(line) > 0 and not line.isspace()) or self._allow_empty:
